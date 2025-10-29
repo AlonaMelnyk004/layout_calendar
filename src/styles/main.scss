@@ -69,10 +69,12 @@ body {
   $month-lengths: 28, 29, 30, 31;
   $max-length: 31;
 
-  @for $length from $month-lengths through &--month-length-#{$length} {
-    @for $i from ($length + 1) through $max-length {
-      .calendar__day:nth-child(#{$i}) {
-        display: none;
+  @for $length from $month-lengths {
+    &--month-length-#{$length} {
+      @for $i from ($length + 1) through $max-length {
+        .calendar__day:nth-child(#{$i}) {
+          display: none;
+        }
       }
     }
   }
