@@ -26,7 +26,6 @@ body {
     height: $cell-size;
     width: $cell-size;
     border: 1px solid #000;
-    padding: 1px;
     transition:
       transform 0.5s,
       background-color 0.5s;
@@ -37,7 +36,7 @@ body {
           content: '#{$day}';
           position: absolute;
           font-family: Arial, Helvetica, sans-serif;
-          font-size: 31px;
+          font-size: 30px;
           inset: 0;
           display: flex;
           align-items: center;
@@ -70,12 +69,10 @@ body {
   $month-lengths: 28, 29, 30, 31;
   $max-length: 31;
 
-  @each $length in $month-lengths {
-    &--month-length-#{$length} {
-      @for $i from ($length + 1) through $max-length {
-        .calendar__day:nth-child(#{$i}) {
-          display: none;
-        }
+  @for $length from $month-lengths through &--month-length-#{$length} {
+    @for $i from ($length + 1) through $max-length {
+      .calendar__day:nth-child(#{$i}) {
+        display: none;
       }
     }
   }
